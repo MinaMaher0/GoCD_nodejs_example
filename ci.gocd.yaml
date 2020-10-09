@@ -1,7 +1,6 @@
-format_version: 9 
 pipelines:
   ci:
-    group: simple
+    group: test
     # parameters:
     #   commitID: value1
     materials:
