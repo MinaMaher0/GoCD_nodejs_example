@@ -1,6 +1,6 @@
 pipelines:
   ci:
-    group: hhhh
+    group: test
     # parameters:
     #   commitID: value1
     materials:
