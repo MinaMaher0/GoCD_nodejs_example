@@ -1,10 +1,6 @@
-environments:
-  default:
-    pipelines:
-        - ci
 pipelines:
   ci:
-    group: test
+    group: hhhh
     # parameters:
     #   commitID: value1
     materials:
