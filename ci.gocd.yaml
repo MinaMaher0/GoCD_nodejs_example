@@ -1,0 +1,18 @@
+format_version: 9 
+pipelines:
+  ci:
+    parameters:
+      commitID: value1
+    materials:
+      mygit:
+        git: https://github.com/MinaMaher0/GoCD_nodejs_example
+    stages:
+    - print-param:
+        jobs:
+          print:
+            tasks:
+             - exec:
+                 command: echo
+                 arguments: 
+                  - ${commitID}
+
