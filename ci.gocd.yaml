@@ -1,6 +1,7 @@
 format_version: 9 
 pipelines:
   ci:
+    group: mygroup
     parameters:
       commitID: value1
     materials:
