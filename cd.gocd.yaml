@@ -1,0 +1,59 @@
+pipelines:
+  ci:
+    environment_variables:
+        Environment: Enter dev or test (case sensitive)
+    secure_variables:
+      DOCKERUSER: AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA==
+      DOCKERPASSWORD: AES:RXRtBAZNAyB3XaQLT4OJ6Q==:AX+SB8IiMDDsadHEFjtd5Q==
+      MYSQL_HOST: AES:xz4mJNl0/VhByjOnTTfT2Q==:Zy+46MUOAidn1wcTSdvEjA==
+      MYSQL_USERNAME: AES:x3qhah1a0qHW5HVdt39+VQ==:0GvKsMA//r//ZGDfD5FcQQ==
+      MYSQL_PASSWORD: AES:TVKtOhVXHgwvaRc2URPd1w==:ZYaygDDzzOzfqCLhZDXQJg==
+    group: new-group
+    materials:
+      mygit:
+        git: https://github.com/MinaMaher0/GoCD_nodejs_example
+    stages:
+      - replace-env:
+          jobs:
+            replace-env:
+              tasks:
+              - exec:
+                  command: sh 
+                  arguments:
+                    - -c 
+                    - sed -i 's/namespace-value/$Environment/g' *.yaml
+              - exec:
+                  command: sh 
+                  arguments:
+                    - -c 
+                    - sed -i 's/nexus-IP/$DOCKERUSER/g' app-deployment.yaml
+              - exec:
+                  command: sh 
+                  arguments:
+                    - -c 
+                    - sed -i 's/host-value/$MYSQL_HOST/g' app-secret.yaml
+              - exec:
+                  command: sh 
+                  arguments:
+                    - -c 
+                    - sed -i 's/username-value/$MYSQL_USERNAME/g' app-secret.yaml
+              - exec:
+                  command: sh 
+                  arguments:
+                    - -c 
+                    - sed -i 's/password-value/$MYSQL_PASSWORD/g' app-secret.yaml
+              - exec:
+                  command: sh 
+                  arguments:
+                    - -c 
+                    - sed -i 's/database-value/vodafone-$Environment/g' app-secret.yaml
+      - deploy:
+          jobs:
+            run-ansible-playbook:
+              tasks:
+              - exec:
+                  command: ansible-playbook 
+                  arguments:
+                    - playbook.yaml
+          
+      

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  namespace: "namespace-value"
+  labels:
+    app: node-dep
+spec:
+  selector:
+    matchLabels:
+      app: node
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: node
+        tier: web
+    spec:
+      containers:
+      - name: node-app
+        image: nexus-IP/node-app
+        ports:
+        - containerPort: 3000
+        env:
+        - name : HOST
+          valueFrom:
+            secretKeyRef: 
+              name: app-secret
+              key: HOST
+        - name : USERNAME
+          valueFrom:
+            secretKeyRef: 
+              name: app-secret
+              key: USERNAME
+        - name : PASSWORD
+          valueFrom:
+            secretKeyRef: 
+              name: app-secret
+              key: PASSWORD
+        - name : DATABASE
+          valueFrom:
+            secretKeyRef: 
+              name: app-secret
+              key: DATABASE
