@@ -21,11 +21,10 @@ pipelines:
                     - -t
                     - node-app
                     - . 
-      
       - tag-image:
           jobs:
-            print:
-              tag-image:
+            tag-image:
+              tasks:
               - exec:
                   command: docker
                   arguments:
@@ -35,8 +34,8 @@ pipelines:
                     - . 
       - login-docker-hub:
           jobs:
-            print:
-              login:
+            login:
+              tasks:
               - exec:
                   command: sh
                   arguments:
@@ -44,8 +43,8 @@ pipelines:
                     - docker login -u $DOCKERUSER -p $DOCKERPASSWORD 
       - push-image-to-docker-hub:
           jobs:
-            print:
-              pushing:
+            pushing:
+              tasks:
               - exec:
                   command: sh
                   arguments:
