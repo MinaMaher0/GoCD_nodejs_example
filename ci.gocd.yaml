@@ -1,7 +1,7 @@
 pipelines:
   ci:
     environment_variables:
-      COMMIT_ID: "Enter commit ID"
+      COMMIT_ID: Enter commit ID
     secure_variables:
       DOCKERUSER: AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA==
       DOCKERPASSWORD: AES:RXRtBAZNAyB3XaQLT4OJ6Q==:AX+SB8IiMDDsadHEFjtd5Q==
