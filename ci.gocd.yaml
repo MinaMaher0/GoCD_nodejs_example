@@ -1,5 +1,7 @@
 pipelines:
   ci:
+    environment_variables:
+      COMMIT_ID: "Enter commit ID"
     secure_variables:
       DOCKERUSER: AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA==
       DOCKERPASSWORD: AES:RXRtBAZNAyB3XaQLT4OJ6Q==:AX+SB8IiMDDsadHEFjtd5Q==
@@ -10,6 +12,15 @@ pipelines:
       mygit:
         git: https://github.com/MinaMaher0/GoCD_nodejs_example
     stages:
+      - git-checkout:
+        jobs:
+          git-checkout:
+            tasks:
+            - exec:
+              command: sh 
+              arguments:
+                - c 
+                - git checkout $COMMIT_ID
       - build-docker-image:
           jobs:
             build-image:
