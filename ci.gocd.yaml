@@ -2,6 +2,7 @@ pipelines:
   ci:
     secure_variables:
       DOCKERUSER: AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA==
+      DOCKERPASSWORD: AES:RXRtBAZNAyB3XaQLT4OJ6Q==:AX+SB8IiMDDsadHEFjtd5Q==
     group: new-group
     # parameters:
     #   commitID: value1
@@ -28,17 +29,34 @@ pipelines:
                     - -c
                     - docker pull $DOCKERUSER/node-app
       
-      # - push-image-to-dockerhub:
-      #     jobs:
-      #       print:
-      #         tag-image:
-      #         - exec:
-      #             command: docker
-      #             arguments:
-      #               - tag
-      #               - -t
-      #               - node-app
-      #               - . 
-      
+      - tag-image:
+          jobs:
+            print:
+              tag-image:
+              - exec:
+                  command: docker
+                  arguments:
+                    - tag
+                    - -t
+                    - node-app
+                    - . 
+      - login-docker-hub:
+          jobs:
+            print:
+              login:
+              - exec:
+                  command: sh
+                  arguments:
+                    - -c
+                    - docker login -u $DOCKERUSER -p $DOCKERPASSWORD 
+      - push-image-to-docker-hub:
+          jobs:
+            print:
+              pushing:
+              - exec:
+                  command: sh
+                  arguments:
+                    - -c
+                    - docker push $DOCKERUSER/node-app       
               
 
