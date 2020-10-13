@@ -28,7 +28,7 @@ pipelines:
                   command: docker
                   arguments:
                     - pull 
-                    - $DOCKER_USER/jenkins-ansible
+                    - "$DOCKER_USER/jenkins-ansible"
       
       # - push-image-to-dockerhub:
       #     jobs:
