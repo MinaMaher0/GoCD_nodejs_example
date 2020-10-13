@@ -20,7 +20,7 @@ pipelines:
                     - -t
                     - node-app
                     - . 
-      - build-docker-image:
+      - pull-image:
           jobs:
             build-image:
               tasks:
@@ -28,7 +28,7 @@ pipelines:
                   command: docker
                   arguments:
                     - pull 
-                    - minamaher0/jenkins-ansible
+                    - "${DOCKER_USER}/jenkins-ansible"
       
       # - push-image-to-dockerhub:
       #     jobs:
