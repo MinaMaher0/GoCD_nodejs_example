@@ -26,12 +26,12 @@ pipelines:
             tag-image:
               tasks:
               - exec:
-                  command: docker
+                  command: sh
                   arguments:
-                    - tag
-                    - -t
+                    - -c
+                    - docker tag
                     - node-app
-                    - . 
+                    - $DOCKERUSER/node-app
       - login-docker-hub:
           jobs:
             login:
