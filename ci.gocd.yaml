@@ -29,9 +29,7 @@ pipelines:
                   command: sh
                   arguments:
                     - -c
-                    - docker tag
-                    - node-app
-                    - $DOCKERUSER/node-app
+                    - docker tag node-app $DOCKERUSER/node-app
       - login-docker-hub:
           jobs:
             login:
