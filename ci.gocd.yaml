@@ -17,10 +17,10 @@ pipelines:
             git-checkout:
               tasks:
               - exec:
-                command: sh 
-                arguments:
-                  - c 
-                  - git checkout $COMMIT_ID
+                  command: sh 
+                  arguments:
+                    - c 
+                    - git checkout $COMMIT_ID
       - build-docker-image:
           jobs:
             build-image:
