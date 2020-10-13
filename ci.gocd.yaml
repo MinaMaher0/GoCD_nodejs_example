@@ -26,7 +26,7 @@ pipelines:
                   command: sh
                   arguments:
                     - -c
-                    - pull $DOCKERUSER/jenkins-ansible
+                    - docker pull $DOCKERUSER/jenkins-ansible
             echo:
               tasks:
               - exec:
