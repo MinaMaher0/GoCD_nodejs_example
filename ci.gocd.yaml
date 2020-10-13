@@ -6,8 +6,6 @@ pipelines:
       DOCKERUSER: AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA==
       DOCKERPASSWORD: AES:RXRtBAZNAyB3XaQLT4OJ6Q==:AX+SB8IiMDDsadHEFjtd5Q==
     group: new-group
-    # parameters:
-    #   commitID: value1
     materials:
       mygit:
         git: https://github.com/MinaMaher0/GoCD_nodejs_example
