@@ -1,18 +1,34 @@
 pipelines:
   ci:
-    group: test
+    group: new-group
     # parameters:
     #   commitID: value1
     materials:
       mygit:
         git: https://github.com/MinaMaher0/GoCD_nodejs_example
     stages:
-      - print-param:
+      - build-docker-image:
           jobs:
-            print:
+            build-image:
               tasks:
               - exec:
-                  command: echo
-                  arguments: 
-                    - ${commitID}
+                  command: docker
+                  arguments:
+                    - build
+                    - -t
+                    - node-app
+                    - . 
+      # - push-image-to-dockerhub:
+      #     jobs:
+      #       print:
+      #         tag-image:
+      #         - exec:
+      #             command: docker
+      #             arguments:
+      #               - tag
+      #               - -t
+      #               - node-app
+      #               - . 
+      
+              
 
