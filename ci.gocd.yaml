@@ -19,7 +19,7 @@ pipelines:
               - exec:
                   command: sh 
                   arguments:
-                    - c 
+                    - -c 
                     - git checkout $COMMIT_ID
       - build-docker-image:
           jobs:
