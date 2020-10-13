@@ -26,14 +26,7 @@ pipelines:
                   command: sh
                   arguments:
                     - -c
-                    - docker pull $DOCKERUSER/jenkins-ansible
-            echo:
-              tasks:
-              - exec:
-                 command: sh
-                 arguments:
-                   - -c
-                   - echo $DOCKERUSER
+                    - docker pull $DOCKERUSER/node-app
       
       # - push-image-to-dockerhub:
       #     jobs:
