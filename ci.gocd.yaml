@@ -20,9 +20,7 @@ pipelines:
                     - -t
                     - node-app
                     - . 
-      - pull-image:
-          jobs:
-            build-image:
+            pull-image:
               tasks:
               - exec:
                   command: docker
