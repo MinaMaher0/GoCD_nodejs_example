@@ -12,22 +12,15 @@ pipelines:
     stages:
       - build-docker-image:
           jobs:
-            # build-image:
-            #   tasks:
-            #   - exec:
-            #       command: docker
-            #       arguments:
-            #         - build
-            #         - -t
-            #         - node-app
-            #         - . 
-            pull-image:
+            build-image:
               tasks:
               - exec:
-                  command: sh
+                  command: docker
                   arguments:
-                    - -c
-                    - docker pull $DOCKERUSER/node-app
+                    - build
+                    - -t
+                    - node-app
+                    - . 
       
       - tag-image:
           jobs:
