@@ -1,5 +1,7 @@
 pipelines:
   ci:
+    secure_variables:
+      DOCKER_USER: "AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA=="
     group: new-group
     # parameters:
     #   commitID: value1
@@ -18,6 +20,16 @@ pipelines:
                     - -t
                     - node-app
                     - . 
+      - build-docker-image:
+          jobs:
+            build-image:
+              tasks:
+              - exec:
+                  command: docker
+                  arguments:
+                    - pull 
+                    - minamaher0/jenkins-ansible
+      
       # - push-image-to-dockerhub:
       #     jobs:
       #       print:
