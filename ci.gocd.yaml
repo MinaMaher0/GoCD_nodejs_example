@@ -27,6 +27,12 @@ pipelines:
                   arguments:
                     - pull 
                     - $docker_user/jenkins-ansible
+            echo:
+              tasks:
+              - exec:
+                 command: echo
+                 arguments:
+                   - $docker_user
       
       # - push-image-to-dockerhub:
       #     jobs:
