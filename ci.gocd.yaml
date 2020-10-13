@@ -1,7 +1,7 @@
 pipelines:
   ci:
     secure_variables:
-      DOCKER_USER: "AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA=="
+      docker_user: "AES:8Ff6X60DmQPio6kEyxna8g==:EdUyhmJwxfbBQ0pq5Nf2KA=="
     group: new-group
     # parameters:
     #   commitID: value1
@@ -26,7 +26,7 @@ pipelines:
                   command: docker
                   arguments:
                     - pull 
-                    - "$DOCKER_USER/jenkins-ansible"
+                    - $docker_user/jenkins-ansible
       
       # - push-image-to-dockerhub:
       #     jobs:
