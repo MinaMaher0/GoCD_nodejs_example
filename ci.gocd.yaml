@@ -23,13 +23,16 @@ pipelines:
             pull-image:
               tasks:
               - exec:
-                  command: docker
+                  command: sh
                   arguments:
+                    - -c
                     - pull $DOCKERUSER/jenkins-ansible
             echo:
               tasks:
               - exec:
+                 command: sh
                  arguments:
+                   - -c
                    - echo $DOCKERUSER
       
       # - push-image-to-dockerhub:
