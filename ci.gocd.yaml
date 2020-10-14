@@ -21,11 +21,7 @@ pipelines:
                   command: sh 
                   arguments:
                     - -c 
-                    - git checkout $COMMIT_ID
-      - list-files:
-          jobs:
-            list:
-              tasks:
+                    - git checkout $
               - exec:
                   command: ls
       - build-docker-image:
