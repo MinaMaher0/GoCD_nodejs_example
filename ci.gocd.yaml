@@ -1,5 +1,6 @@
 pipelines:
   ci:
+    lock_behavior: unlockWhenFinished
     environment_variables:
       COMMIT_ID: Enter commit ID
     secure_variables:
@@ -21,6 +22,12 @@ pipelines:
                   arguments:
                     - -c 
                     - git checkout $COMMIT_ID
+      - list-files:
+          jobs:
+            list:
+              tasks:
+              - exec:
+                  command: ls
       - build-docker-image:
           jobs:
             build-image:
