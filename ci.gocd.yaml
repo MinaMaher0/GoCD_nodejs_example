@@ -13,23 +13,16 @@ pipelines:
       mygit:
         git: https://github.com/MinaMaher0/GoCD_nodejs_example
     stages:
-      - git-checkout:
+      - git-checkout-and-build-docker-image:
+          clean_workspace: yes
           jobs:
-            git-checkout:
+            git-checkout-build-image:
               tasks:
               - exec:
                   command: sh 
                   arguments:
                     - -c 
                     - git checkout $COMMIT_ID
-              - exec:
-                  command: ls
-      - build-docker-image:
-          jobs:
-            build-image:
-              tasks:
-              - exec:
-                  command: ls
               - exec:
                   command: docker
                   arguments:
